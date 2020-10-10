@@ -1,23 +1,23 @@
-import React, { FunctionComponent, useState } from "react";
+import React, { useState } from "react";
 import { Auth } from "../auth/auth";
 
-const Signup: FunctionComponent = (props: any) => {
+const Signin = (props: any) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { history } = props;
-  const signUp = async (
+  const signIn = async (
     username: string,
     password: string,
     event: any
   ): Promise<void> => {
     const auth = new Auth(username, password, history);
     event.preventDefault();
-    auth.signUp();
+    auth.signIn();
   };
 
   return (
     <div>
-      <form onSubmit={(e) => signUp(username, password, e)}>
+      <form onSubmit={(e) => signIn(username, password, e)}>
         <input
           type="text"
           onChange={(e) => setUsername(e.target.value)}
@@ -28,10 +28,10 @@ const Signup: FunctionComponent = (props: any) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Your Password"
         />
-        <button type="submit">Sign up</button>
+        <button type="submit">Sign in</button>
       </form>
     </div>
   );
 };
 
-export default Signup;
+export default Signin;
