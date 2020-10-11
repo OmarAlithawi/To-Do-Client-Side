@@ -33,7 +33,7 @@ export class Auth {
     };
     try {
       await fetch("http://localhost:3001/auth/signup", config);
-      this.history.replace("/signin");
+      this.history.push("/signin");
       this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
       console.log(e);
@@ -58,14 +58,16 @@ export class Auth {
       const userInfo = await response.json();
       const jwtToken = await userInfo.access_token;
 
-      localStorage.setItem(
-        "login",
-        JSON.stringify({
-          access_token: jwtToken,
-          login: true,
-          username: userInfo.name,
-        })
-      );
+      if (jwtToken) {
+        localStorage.setItem(
+          "login",
+          JSON.stringify({
+            access_token: jwtToken,
+            login: true,
+            username: userInfo.name,
+          })
+        );
+      }
       this.history.replace("/");
       this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {

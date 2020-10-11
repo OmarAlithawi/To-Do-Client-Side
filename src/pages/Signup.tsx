@@ -6,7 +6,12 @@ const Signup: FunctionComponent = (props: any) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { history } = props;
-  const signUp = async (username: string, password: string): Promise<void> => {
+
+  const signUp = async (
+    username: string,
+    password: string,
+    event: any
+  ): Promise<void> => {
     const auth = new Auth(
       username,
       password,
@@ -14,13 +19,13 @@ const Signup: FunctionComponent = (props: any) => {
       props.rerenderAppComponentState,
       props.rerenderAppComponentFunction
     );
-
+    event.preventDefault();
     auth.signUp();
   };
 
   return (
     <div>
-      <form onSubmit={() => signUp(username, password)}>
+      <form onSubmit={(e) => signUp(username, password, e)}>
         <input
           type="text"
           onChange={(e) => setUsername(e.target.value)}

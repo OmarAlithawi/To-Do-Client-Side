@@ -45,7 +45,7 @@ const Signin = withRouter((props: any) => {
         />
         <button type="submit">Sign in</button>
       </form>
-      <a href="/signup">Create an account</a>
+      <h1 onClick={() => history.push("/signup")}>Create an account</h1>
     </div>
   );
 });
