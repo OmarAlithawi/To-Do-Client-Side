@@ -1,0 +1,42 @@
+.signupContainer {
+    display: flex;  
+    flex-direction: row-reverse;
+    justify-content: center;
+    box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.25), 2px 4px 16px rgba(0, 0, 0, 0.25);
+    height: 50vh;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    text-align: center;
+}
+
+.signupContainer .listContainer  {
+   background-color: beige;
+   text-align: start;
+   vertical-align: middle;
+   width: 50%;
+}
+
+
+.signupContainer .formContainer {
+    width: 50%;
+}
+
+.signupContainer .formContainer form{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+    width: 100%;
+}
+
+.formContainer form  > *{
+    margin-top: 30px;
+}
+
+.signupContainer .formContainer p {
+    cursor: pointer;
+    color: blue;
+}

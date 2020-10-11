@@ -1,0 +1,28 @@
+ .signinCotainer {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.25), 2px 4px 16px rgba(0, 0, 0, 0.25);
+    width: 300px;
+}
+
+.signinCotainer form{
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    align-items: center;
+}
+
+.SigninBtn {
+    align-self: center;
+}
+.signinCotainer form  > *{
+    margin-top: 30px;
+} 
+
+.signinCotainer p {
+    cursor: pointer;
+    color: blue;
+}

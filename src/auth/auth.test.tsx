@@ -1,9 +1,9 @@
 import React from "react";
 import { Auth } from "./auth";
 import { shallow } from "enzyme";
-import Signup from "../pages/Signup";
+import Signup from "../pages/signup/Signup";
 
-import Signin from "../pages/Signin";
+import Signin from "../pages/signin/Signin";
 
 jest.mock("./auth");
 
