@@ -1,23 +1,26 @@
 import React, { FunctionComponent, useState } from "react";
+import { withRouter } from "react-router-dom";
 import { Auth } from "../auth/auth";
 
 const Signup: FunctionComponent = (props: any) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { history } = props;
-  const signUp = async (
-    username: string,
-    password: string,
-    event: any
-  ): Promise<void> => {
-    const auth = new Auth(username, password, history);
-    event.preventDefault();
+  const signUp = async (username: string, password: string): Promise<void> => {
+    const auth = new Auth(
+      username,
+      password,
+      history,
+      props.rerenderAppComponentState,
+      props.rerenderAppComponentFunction
+    );
+
     auth.signUp();
   };
 
   return (
     <div>
-      <form onSubmit={(e) => signUp(username, password, e)}>
+      <form onSubmit={() => signUp(username, password)}>
         <input
           type="text"
           onChange={(e) => setUsername(e.target.value)}
@@ -28,10 +31,12 @@ const Signup: FunctionComponent = (props: any) => {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Your Password"
         />
-        <button type="submit">Sign up</button>
+        <button type="submit" className="btn">
+          Sign up
+        </button>
       </form>
     </div>
   );
 };
 
-export default Signup;
+export default withRouter(Signup);

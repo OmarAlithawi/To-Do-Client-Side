@@ -2,10 +2,21 @@ export class Auth {
   private username: string;
   private password: string;
   private history: any;
-  constructor(username: string, password: string, history: any) {
+  private rerenderAppComponentState: boolean;
+  private rerenderAppComponentFunction: Function;
+
+  constructor(
+    username: string,
+    password: string,
+    history: any,
+    rerenderAppComponentState: boolean,
+    rerenderAppComponentFunction: Function
+  ) {
     this.username = username;
     this.password = password;
     this.history = history;
+    this.rerenderAppComponentState = rerenderAppComponentState;
+    this.rerenderAppComponentFunction = rerenderAppComponentFunction;
   }
 
   async signUp(): Promise<void> {
@@ -22,7 +33,8 @@ export class Auth {
     };
     try {
       await fetch("http://localhost:3001/auth/signup", config);
-      this.history.push("/signin");
+      this.history.replace("/signin");
+      this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
       console.log(e);
     }
@@ -54,14 +66,16 @@ export class Auth {
           username: userInfo.name,
         })
       );
-      this.history.push("/");
+      this.history.replace("/");
+      this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
       console.log(e);
     }
   }
 
-  async signOut() {
+  signOut() {
     localStorage.clear();
+    this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     this.history.push("/signin");
   }
 }

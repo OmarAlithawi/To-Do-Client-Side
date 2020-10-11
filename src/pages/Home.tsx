@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import { Auth } from "../auth/auth";
 
-const Home = () => {
+const Home = (props: any) => {
+  const { history } = props;
   const signOut = () => {
-    return Auth.prototype.signOut();
+    const auth = new Auth(
+      "john",
+      "33333",
+      history,
+      props.rerenderAppComponentState,
+      props.rerenderAppComponentFunction
+    );
+    auth.signOut();
   };
+
+  useEffect(() => {
+    if (!props.isLogged) {
+      history.replace("/signin");
+    }
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div>
@@ -14,4 +30,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default withRouter(Home);
