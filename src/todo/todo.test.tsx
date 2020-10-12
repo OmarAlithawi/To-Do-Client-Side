@@ -17,6 +17,7 @@ describe("Components testing", () => {
       }, 0);
     });
   });
+  
   describe("update todo method", () => {
     it("Expected to update a todo", async () => {
       const mockGetTodo = jest.fn();
