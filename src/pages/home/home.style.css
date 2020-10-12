@@ -1,0 +1,26 @@
+
+nav{
+    width: 70%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    height: 5vh;
+}
+
+.searchContainer{
+    width: 70%;
+    display: flex;
+    margin: 40px auto;
+    justify-content: space-between;
+}
+
+.searchContainer input {
+    width: 75%;
+    padding: 10px;
+}
+
+.signoutBtn {
+    box-shadow: none !important;
+}

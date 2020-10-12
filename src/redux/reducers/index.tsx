@@ -1,7 +1,16 @@
 import { combineReducers } from "redux";
-import { JWT_TOKEN } from "../types";
+import { CURRENT_USERNAME, JWT_TOKEN, GET_TODOES } from "../types";
 
-const setJwtToken = (state = null, action: any) => {
+const setCurrentUsername = (state = "", action: any) => {
+  switch (action.type) {
+    case CURRENT_USERNAME:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const setJwtToken = (state = "", action: any) => {
   switch (action.type) {
     case JWT_TOKEN:
       return action.payload;
@@ -10,8 +19,19 @@ const setJwtToken = (state = null, action: any) => {
   }
 };
 
+const setTodoes = (state = "", action: any) => {
+  switch (action.type) {
+    case GET_TODOES:
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 const allReducers = combineReducers({
+  username: setCurrentUsername,
   jwtToken: setJwtToken,
+  todoes: setTodoes,
 });
 
 export default allReducers;
