@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Signin from "./pages/signin/Signin";
 import Signup from "./pages/signup/Signup";
-import Home from "./pages/Home";
+import Home from "./pages/home/Home";
 import ProtectedRoute from "./ProtectedRoute";
 
 const App = () => {

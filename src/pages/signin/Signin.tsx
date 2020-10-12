@@ -53,7 +53,7 @@ const Signin = withRouter((props: any) => {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button type="submit" className="SigninBtn" variant="contained">
+        <Button type="submit" className="signinBtn" variant="contained">
           Sign in
         </Button>
       </form>

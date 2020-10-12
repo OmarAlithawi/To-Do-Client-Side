@@ -1,9 +1,12 @@
 import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { Auth } from "../auth/auth";
+import { Auth } from "../../auth/auth";
+import { Container } from "@material-ui/core";
+import Todo from "../../components/Todo";
 
 const Home = (props: any) => {
   const { history } = props;
+
   const signOut = () => {
     const auth = new Auth(
       "john",
@@ -23,10 +26,13 @@ const Home = (props: any) => {
   }, []);
 
   return (
-    <div>
-      <h1>Hi</h1>
-      <button onClick={() => signOut()}>Sign out</button>
-    </div>
+    <Container>
+      <div>
+        <h1>Hi</h1>
+        <button onClick={() => signOut()}>Sign out</button>
+        <Todo />
+      </div>
+    </Container>
   );
 };
 

@@ -1,0 +1,10 @@
+.todoContainer{
+    width: 70%;
+   display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+    box-shadow: -6px -6px 20px rgba(255, 255, 255, 0.25), 2px 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+
+

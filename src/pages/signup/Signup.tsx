@@ -60,7 +60,7 @@ const Signup: FunctionComponent = (props: any) => {
             type="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <Button type="submit" variant="contained">
+          <Button className="signupBtn" type="submit" variant="contained">
             Sign up
           </Button>
         </form>
