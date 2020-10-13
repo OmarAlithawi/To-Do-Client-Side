@@ -77,6 +77,7 @@ const Home = (props: any) => {
           <input
             type="text"
             placeholder="Add a todo"
+            className="addTodoInput"
             onKeyPress={(e: any) => createTodo(e.target.value, e)}
           />
           <select

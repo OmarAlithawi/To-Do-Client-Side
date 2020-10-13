@@ -27,33 +27,18 @@ describe("Components testing", () => {
     });
   });
 
-  describe("update todo method", () => {
-    it("Expected to update a todo", async () => {
-      const mockGetTodo = jest.fn();
-      Todo.prototype.getTodo = mockGetTodo;
-      mockGetTodo.mockReturnValue(Promise.resolve());
-      const wrapper = shallow(
-        <Provider store={store}>
-          <Home.WrappedComponent />
-        </Provider>
-      );
-      setTimeout(() => {
-        expect(mockGetTodo).toHaveBeenCalledTimes(1);
-      }, 0);
-    });
-  });
-  describe("Get todoes method", () => {
+  describe("Create todo method", () => {
     it("Expected to get all in progress todoes for the current user", async () => {
-      const mockGetTodo = jest.fn();
-      Todo.prototype.getTodo = mockGetTodo;
-      mockGetTodo.mockReturnValue(Promise.resolve());
+      const mockCreateTodo = jest.fn();
+      Todo.prototype.createTodo = mockCreateTodo;
+      mockCreateTodo.mockReturnValue(Promise.resolve());
       const wrapper = shallow(
         <Provider store={store}>
           <Home.WrappedComponent />
         </Provider>
       );
       setTimeout(() => {
-        expect(mockGetTodo).toHaveBeenCalledTimes(1);
+        expect(mockCreateTodo).toHaveBeenCalledTimes(1);
       }, 0);
     });
   });
