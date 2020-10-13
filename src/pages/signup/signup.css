@@ -17,10 +17,12 @@
    text-align: start;
    vertical-align: middle;
    width: 50%;
+   padding: 20px;
 }
 
 
 .signupContainer .formContainer {
+    padding: 20px;
     width: 50%;
 }
 
@@ -39,4 +41,5 @@
 .signupContainer .formContainer p {
     cursor: pointer;
     color: blue;
+    margin-top: 15px;
 }
