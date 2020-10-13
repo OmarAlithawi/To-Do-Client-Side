@@ -7,6 +7,7 @@ import { Todo } from "../../todo/index";
 import { Button, Container } from "@material-ui/core";
 import { getTodoes } from "../../redux/actions";
 import "./home.style.css";
+import { ITodo } from "../../interface/todo.interface";
 
 const Home = (props: any) => {
   const username = useSelector((state: any) => state.username);
@@ -16,17 +17,19 @@ const Home = (props: any) => {
   const dispatch = useDispatch();
   const { history } = props;
 
-  const getInProgressTodoes = async (status: string) => {
+  // To get all todes with the status = IN_PROGRESS
+  const getInProgressTodoes = async (status: string): Promise<void> => {
     const todo = new Todo(
       jwtToken,
       props.rerenderAppComponentState,
       props.rerenderAppComponentFunction
     );
-    const todoes = await todo.getTodo(status);
+    const todoes: ITodo[] = await todo.getTodo(status);
     dispatch(getTodoes(todoes));
   };
 
-  const createTodo = (description: string, event: any) => {
+  // To create a todo
+  const createTodo = (description: string, event: any): void => {
     if (event.key === "Enter") {
       const todo = new Todo(
         jwtToken,
@@ -37,7 +40,7 @@ const Home = (props: any) => {
     }
   };
 
-  const signOut = () => {
+  const signOut = (): void => {
     const auth = new Auth(
       "john",
       "33333",
@@ -98,7 +101,6 @@ const Home = (props: any) => {
                 rerenderAppComponentFunction={
                   props.rerenderAppComponentFunction
                 }
-                getInProgressTodoesFunction={getInProgressTodoes}
               />
             );
           })}

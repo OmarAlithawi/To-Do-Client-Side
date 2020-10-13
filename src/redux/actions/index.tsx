@@ -1,3 +1,4 @@
+import { ITodo } from "../../interface/todo.interface";
 import { CURRENT_USERNAME, JWT_TOKEN, GET_TODOES } from "../types";
 
 export const getCurrentUsername = (data: string) => {
@@ -14,7 +15,7 @@ export const getJwtToken = (data: string) => {
   };
 };
 
-export const getTodoes = (data: string) => {
+export const getTodoes = (data: ITodo[]) => {
   return {
     type: GET_TODOES,
     payload: data,

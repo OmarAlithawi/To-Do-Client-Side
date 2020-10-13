@@ -1,18 +1,19 @@
 import React, { useState } from "react";
+import { Todo } from "../todo/index";
+import { useSelector } from "react-redux";
 import { IconButton } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import DoneIcon from "@material-ui/icons/Done";
 import EditIcon from "@material-ui/icons/Edit";
 import UndoIcon from "@material-ui/icons/Undo";
 import "./todo.style.css";
-import { Todo } from "../todo/index";
-import { useSelector } from "react-redux";
 
 const TodoComponent = (props: any) => {
   const { todo } = props;
   const jwtToken = useSelector((state: any) => state.jwtToken);
   const [isEditing, setIsEditing] = useState(false);
 
+  // To delete a todo
   const deleteTodo = (id: number) => {
     const todo = new Todo(
       jwtToken,
@@ -22,6 +23,7 @@ const TodoComponent = (props: any) => {
     todo.deleteTodo(id);
   };
 
+  // To update the status
   const updateTodeStatus = (
     id: number,
     status: string,
@@ -35,6 +37,7 @@ const TodoComponent = (props: any) => {
     todo.updateTodoStatus(id, status, description);
   };
 
+  // To update the Description
   const updateTodoDescription = (
     id: number,
     status: string,
@@ -50,37 +53,42 @@ const TodoComponent = (props: any) => {
       todo.updateTodoDescription(id, status, description);
     }
   };
+
+  const doneOrUndoBtns =
+    todo.status === "DONE" ? (
+      <IconButton
+        onClick={() =>
+          updateTodeStatus(todo.id, "IN_PROGRESS", todo.description)
+        }
+      >
+        <UndoIcon />
+      </IconButton>
+    ) : (
+      <IconButton
+        onClick={() => updateTodeStatus(todo.id, "DONE", todo.description)}
+      >
+        <DoneIcon />
+      </IconButton>
+    );
+
+  const updateInputOrDescription = isEditing ? (
+    <input
+      type="text"
+      placeholder="Add a todo"
+      onKeyPress={(e: any) =>
+        updateTodoDescription(todo.id, todo.status, e.target.value, e)
+      }
+    />
+  ) : (
+    <p>{todo.description}</p>
+  );
+
   return (
     <>
       <div className="todoContainer" id={todo.id}>
-        {todo.status === "DONE" ? (
-          <IconButton
-            onClick={() =>
-              updateTodeStatus(todo.id, "IN_PROGRESS", todo.description)
-            }
-          >
-            <UndoIcon />
-          </IconButton>
-        ) : (
-          <IconButton
-            onClick={() => updateTodeStatus(todo.id, "DONE", todo.description)}
-          >
-            <DoneIcon />
-          </IconButton>
-        )}
+        {doneOrUndoBtns}
         <div>
-          {isEditing ? (
-            <input
-              type="text"
-              placeholder="Add a todo"
-              onKeyPress={(e: any) =>
-                updateTodoDescription(todo.id, todo.status, e.target.value, e)
-              }
-            />
-          ) : (
-            <p>{todo.description}</p>
-          )}
-
+          {updateInputOrDescription}
           <IconButton onClick={() => setIsEditing(!isEditing)}>
             <EditIcon />
           </IconButton>

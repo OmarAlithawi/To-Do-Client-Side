@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { CURRENT_USERNAME, JWT_TOKEN, GET_TODOES } from "../types";
 
-const setCurrentUsername = (state = "", action: any) => {
+const setCurrentUsername = (state = "", action: any): string => {
   switch (action.type) {
     case CURRENT_USERNAME:
       return action.payload;
@@ -10,7 +10,7 @@ const setCurrentUsername = (state = "", action: any) => {
   }
 };
 
-const setJwtToken = (state = "", action: any) => {
+const setJwtToken = (state = "", action: any): string => {
   switch (action.type) {
     case JWT_TOKEN:
       return action.payload;

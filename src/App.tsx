@@ -14,6 +14,7 @@ const App = () => {
     false
   );
 
+  // To rerender the app component
   const rerenderAppComponentFunction = (state: boolean) => {
     return setRerenderAppComponentState(!state);
   };

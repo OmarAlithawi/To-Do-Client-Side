@@ -36,11 +36,11 @@ export class Auth {
       this.history.push("/signin");
       this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
-      console.log(e);
+      return e;
     }
   }
 
-  async signIn() {
+  async signIn(): Promise<void> {
     const config = {
       method: "POST",
       headers: {
@@ -71,11 +71,11 @@ export class Auth {
       this.history.replace("/");
       this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
-      console.log(e);
+      return e;
     }
   }
 
-  signOut() {
+  signOut(): void {
     localStorage.clear();
     this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     this.history.push("/signin");
