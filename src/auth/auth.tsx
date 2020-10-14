@@ -54,7 +54,10 @@ export class Auth {
     };
 
     try {
-      const response = await fetch("https://todolist-nestjs.herokuapp.com/auth/signin", config);
+      const response = await fetch(
+        "https://todolist-nestjs.herokuapp.com/auth/signin",
+        config
+      );
       const userInfo = await response.json();
       const jwtToken = await userInfo.access_token;
 
