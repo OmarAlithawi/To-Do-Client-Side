@@ -10,7 +10,7 @@ jest.mock("./index");
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const store = createStore(allReducers, composeEnhancers());
 
-describe("Components testing", () => {
+describe("Components testing.", () => {
   describe("Get todoes method", () => {
     it("Expected to get all in progress todoes for the current user", async () => {
       const mockGetTodo = jest.fn();
