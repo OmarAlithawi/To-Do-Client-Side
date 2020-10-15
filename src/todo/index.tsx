@@ -26,7 +26,7 @@ export class Todo {
 
     try {
       const response = await fetch(
-        `https://todolist-nestjs.herokuapp.com/todo?status=${status}`,
+        `http://localhost:3002/todo?status=${status}`,
         config
       );
       let todoes = await response.json();
@@ -51,7 +51,7 @@ export class Todo {
       }),
     };
     try {
-      await fetch("https://todolist-nestjs.herokuapp.com/todo/", config);
+      await fetch("http://localhost:3002/todo/", config);
       this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
       return e;
@@ -75,7 +75,7 @@ export class Todo {
       }),
     };
     try {
-      await fetch(`https://todolist-nestjs.herokuapp.com/todo/${id}`, config);
+      await fetch(`http://localhost:3002/todo/${id}`, config);
       this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
       return e;
@@ -99,7 +99,7 @@ export class Todo {
       }),
     };
     try {
-      await fetch(`https://todolist-nestjs.herokuapp.com/todo/${id}`, config);
+      await fetch(`http://localhost:3002/todo/${id}`, config);
       this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
       return e;
@@ -116,7 +116,7 @@ export class Todo {
     };
 
     try {
-      await fetch(`https://todolist-nestjs.herokuapp.com/todo/${id}`, config);
+      await fetch(`http://localhost:3002/todo/${id}`, config);
       this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
       return e;

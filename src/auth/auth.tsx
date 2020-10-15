@@ -32,7 +32,7 @@ export class Auth {
       }),
     };
     try {
-      await fetch("https://todolist-nestjs.herokuapp.com/auth/signup", config);
+      await fetch("http://localhost:3002/auth/signup", config);
       this.history.push("/signin");
       this.rerenderAppComponentFunction(this.rerenderAppComponentState);
     } catch (e) {
@@ -55,7 +55,7 @@ export class Auth {
 
     try {
       const response = await fetch(
-        "https://todolist-nestjs.herokuapp.com/auth/signin",
+        "http://localhost:3002/auth/signin",
         config
       );
       const userInfo = await response.json();
