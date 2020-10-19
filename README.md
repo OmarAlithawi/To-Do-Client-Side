@@ -18,8 +18,7 @@ Run it
 $ yarn start 
 ```
 
-## Server side
-This is the backend for this project, you need to repeat the same Instructions for this repository.
+## Server side repository
 
 ```bash
 $ https://github.com/OmarAlithawi/To-Do-Server-Side.git

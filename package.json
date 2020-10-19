@@ -29,7 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "fix": "prettier --write src/**/*.{ts,tsx}",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "react-scripts build && aws s3 rm s3://todolist-frontend/ --recursive && aws s3 cp ./build s3://todolist-frontend/ --recursive --acl public-read"
   },
   "eslintConfig": {
     "extends": "react-app"
